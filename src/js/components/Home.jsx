@@ -4,24 +4,54 @@ import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-            
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+import {Navbar} from './navbar.jsx';
+import {Card} from './card.jsx'; 
+import {Welcome} from './welcome.jsx';
+import {Footer} from './footer.jsx'
+import { Version } from "./version.jsx";
+
+const Home = () => {
+	
+	const setGrid = (cols) => {
+    const container = document.getElementById("mainContainer");
+
+    const cards = container.querySelectorAll(".card-col");
+
+    cards.forEach((card) => {
+    card.className = "card-col col-12 col-md-" + (12 / cols);
+  });
+};
+	
+	return (
+	<div>
+		<Navbar/>
+		<Version setGrid={setGrid}/>
+		
+		<Welcome/>
+		
+		<div id= "mainContainer" className="container">
+			<div className="row g-4">
+
+				<div className="card-col col-12 col-md-3">
+					<Card/>
+				</div>
+
+				<div className="card-col col-12 col-md-3">
+					<Card/>
+				</div>
+
+				<div className="card-col col-12 col-md-3">
+					<Card/>
+				</div>
+
+				<div className="card-col col-12 col-md-3">
+					<Card/>
+				</div>
+			</div>
 		</div>
+		<Footer/>
+	</div>
 	);
 };
 
